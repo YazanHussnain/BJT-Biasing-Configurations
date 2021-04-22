@@ -1,0 +1,23 @@
+VOLTAGE DIVIDER BIAS CONFIGURATION
+*Title Line
+VCC 1 0 15
+*15V Volatge source connect at nodes 1 and 0
+R1 1 3 86408.72
+R2 3 0 14851.5
+RC 1 2 6014.85
+* Collector resistance
+RE 4 0 1485.15
+* Emitter Resistance
+Q1 2 3 4 2N3904
+* BJT Model
+.model 2N3904 NPN(Is=6.734f Xti=3 Eg=1.11 Vaf=74.03 Bf=416.4 Ne=1.259
++               Ise=6.734f Ikf=66.78m Xtb=1.5 Br=.7371 Nc=2 Isc=0 Ikr=0 Rc=1
++               Cjc=3.638p Mjc=.3085 Vjc=.75 Fc=.5 Cje=4.493p Mje=.2593 Vje=.75
++               Tr=239.5n Tf=301.2p Itf=.4 Vtf=4 Xtf=2 Rb=10)
+.TRAN 1NS 700NS 0NS
+* Transient Ananlysis
+.PLOT TRAN V(2,4)
+* Plot graph V(3) - V(4)
+.OP
+* Give Voltage in each node and current in each branch
+.END

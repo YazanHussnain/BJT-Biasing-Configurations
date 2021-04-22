@@ -1,0 +1,22 @@
+COLLECTOR FEEDBACK BIAS CONFIGURATION 
+*Title Line
+VCC 1 0 15
+*15V Volatge source connect at nodes 1 and 0
+RC 1 2 7.5k
+* Collector resistance
+RB 3 2 680k
+* Base Resistance
+Q1 2 3 0 2N2222
+* BJT Model
+.model 2N2222 NPN(IS=14.34F XTI=3 EG=1.11 VAF= 74.03 BF=255.9 
++             NE=1.307 ISE=14.34F IKF=.2847 XTB=1.5 BR=6.092 NC=2 
++             ISC=0 IKR=0 RC=1 CJC=7.306P MJC=.3416 VJC=.75 FC=.5 
++             CJE=22.01P MJE=.377 VJE=.75 TR=46.91N TF=411.1P ITF=.6 
++             VTF=1.7 XTF=3 RB=10)
+.TRAN 1NS 7400NS 0NS
+* Transient Ananlysis
+.PLOT TRAN V(3,4)
+* Plot graph V(3) - V(4)
+.OP
+* Give Voltage in each node and current in each branch
+.END
